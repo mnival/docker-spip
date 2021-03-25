@@ -19,7 +19,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: update and push
-        uses: actions/checkout@v2
         run: |
           ./update.sh
           git config user.name github-actions
