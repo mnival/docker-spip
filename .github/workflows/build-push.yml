@@ -3,7 +3,11 @@ name: build and push docker image
 on:
   push:
     branches:
-      - test-actions
+      - main
+    paths:
+      - '[0-9].*/**'
+  schedule:
+    - cron:  '15 00 * * *'
 
 jobs:
   # Push image to GitHub Packages.
