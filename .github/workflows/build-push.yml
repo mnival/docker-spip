@@ -74,7 +74,7 @@ jobs:
           platforms: linux/386,linux/amd64
           push: true
           tags: ${{ steps.tags_caches.outputs.tags }}
-          cache-from: ${{ steps.tags_caches.outputs.caches }}
-          cache-to: type=inline
+#          cache-from: ${{ steps.tags_caches.outputs.caches }}
+#          cache-to: type=inline
           labels: |
             org.opencontainers.image.revision=${{ github.sha }}
