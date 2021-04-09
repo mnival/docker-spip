@@ -8,6 +8,7 @@ on:
       - master
     paths:
       - 'Dockerfile7.2.tpl'
+      - 'Dockerfile7.4.tpl'
       - 'update.sh'
       - 'docker-entrypoint.sh'
 
