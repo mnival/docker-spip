@@ -1,4 +1,4 @@
-FROM php:%%PHP_VERSION%%-apache
+FROM php:7.4-apache
 LABEL maintainer="docker@ipeos.com"
 LABEL authors="Laurent Vergerolle <docker@ipeos.com>, Michael Nival <docker@mn-home.fr>"
 
@@ -25,12 +25,12 @@ RUN set -ex; \
 			libzip-dev \
 		; \
 		debMultiarch="$(dpkg-architecture --query DEB_BUILD_MULTIARCH)"; \
-		docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/; \
+		docker-php-ext-configure gd --with-freetype --with-jpeg; \
 		docker-php-ext-install -j$(nproc) \
 			gd \
 			exif \
 			bcmath \
-			%%MYSQL_PACKAGE%% \
+			mysqli \
 			zip \
 			opcache \
 		; \
@@ -65,8 +65,8 @@ RUN { \
 # Active apache rewrite mode
 RUN a2enmod rewrite
 
-ENV SPIP_VERSION %%SPIP_VERSION%%
-ENV SPIP_PACKAGE %%SPIP_PACKAGE%%
+ENV SPIP_VERSION 4.0
+ENV SPIP_PACKAGE 4.0.0
 
 # Install SPIP-Cli
 RUN set -ex; \
@@ -114,7 +114,7 @@ ENV PHP_MAX_EXECUTION_TIME 60
 ENV PHP_MEMORY_LIMIT 256M
 ENV PHP_POST_MAX_SIZE 40M
 ENV PHP_UPLOAD_MAX_FILESIZE 32M
-ENV PHP_TIMEZONE Europe/Paris
+ENV PHP_TIMEZONE America/Guadeloupe
 
 EXPOSE 80
 
