@@ -1,10 +1,19 @@
 FROM php:%%PHP_VERSION%%-apache
+<<<<<<< HEAD
 LABEL maintainer "Michael Nival <docker@mn-home.fr>"
+=======
+LABEL maintainer="docker@ipeos.com"
+LABEL authors="Laurent Vergerolle <docker@ipeos.com>, Michael Nival <docker@mn-home.fr>"
+>>>>>>> 79ce3153725d98908304b6d1ce39299ae2d0a32e
 
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		ghostscript \
+<<<<<<< HEAD
+=======
+		default-mysql-client \
+>>>>>>> 79ce3153725d98908304b6d1ce39299ae2d0a32e
 	; \
 	rm -rf /var/lib/apt/lists/*;
 

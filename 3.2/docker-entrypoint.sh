@@ -74,7 +74,17 @@ if version_greater "$image_version" "$installed_version"; then
 	if [ ! -e config/connect.php ]; then
 		# Wait for mysql before install
 		# cf. https://docs.docker.com/compose/startup-order/
+<<<<<<< HEAD
 		max_retries=10
+=======
+		if [ ${SPIP_DB_SERVER} = "mysql" ]; then
+			until mysql -h ${SPIP_DB_HOST} -u ${SPIP_DB_LOGIN} -p${SPIP_DB_PASS}; do
+			>&2 echo "mysql is unavailable - sleeping"
+			sleep 1
+			done
+		fi
+		max_retries=20
+>>>>>>> 79ce3153725d98908304b6d1ce39299ae2d0a32e
 		try=0
 		until run_as "spip install \
 			--db-server ${SPIP_DB_SERVER} \

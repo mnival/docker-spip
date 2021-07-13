@@ -1,4 +1,5 @@
 FROM php:7.4-apache
+<<<<<<< HEAD
 LABEL maintainer "Michael Nival <docker@mn-home.fr>"
 
 RUN set -eux; \
@@ -8,6 +9,19 @@ RUN set -eux; \
 	; \
 	rm -rf /var/lib/apt/lists/*;
 
+=======
+LABEL maintainer="docker@ipeos.com"
+LABEL authors="Laurent Vergerolle <docker@ipeos.com>, Michael Nival <docker@mn-home.fr>"
+
+RUN set -eux; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends \
+		ghostscript \
+		default-mysql-client \
+	; \
+	rm -rf /var/lib/apt/lists/*;
+
+>>>>>>> 79ce3153725d98908304b6d1ce39299ae2d0a32e
 RUN set -ex; \
 	\
 	savedAptMark="$(apt-mark showmanual)"; \

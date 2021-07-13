@@ -1,10 +1,19 @@
 FROM php:%%PHP_VERSION%%-apache
+<<<<<<< HEAD
 LABEL maintainer "Michael Nival <docker@mn-home.fr>"
+=======
+LABEL maintainer="docker@ipeos.com"
+LABEL authors="Laurent Vergerolle <docker@ipeos.com>, Michael Nival <docker@mn-home.fr>"
+>>>>>>> 79ce3153725d98908304b6d1ce39299ae2d0a32e
 
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		ghostscript \
+<<<<<<< HEAD
+=======
+		default-mysql-client \
+>>>>>>> 79ce3153725d98908304b6d1ce39299ae2d0a32e
 	; \
 	rm -rf /var/lib/apt/lists/*;
 
@@ -112,7 +121,11 @@ ENV PHP_MAX_EXECUTION_TIME 60
 ENV PHP_MEMORY_LIMIT 256M
 ENV PHP_POST_MAX_SIZE 40M
 ENV PHP_UPLOAD_MAX_FILESIZE 32M
+<<<<<<< HEAD
 ENV PHP_TIMEZONE Europe/Paris
+=======
+ENV PHP_TIMEZONE America/Guadeloupe
+>>>>>>> 79ce3153725d98908304b6d1ce39299ae2d0a32e
 
 EXPOSE 80
 
