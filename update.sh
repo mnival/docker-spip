@@ -2,20 +2,20 @@
 set -euo pipefail
 
 declare -A spipVersions=(
-  [0]='3.1'
-  [1]='3.2'
+  [0]='4.1'
+  [1]='4.2'
 )
 declare -A phpVersions=(
-  [3.1]='7.2'
-  [3.2]='7.4'
+  [4.1]='7.4'
+  [4.2]='8.1'
 )
 declare -A spipPackages=(
-  [3.1]='3.1.15'
-  [3.2]='3.2.11'
+	[4.1]='4.1.12'
+	[4.2]='4.2.5'
 )
 declare -A mysqlPackages=(
-  [3.1]='mysqli'
-  [3.2]='mysqli'
+  [4.1]='mysqli'
+  [4.2]='mysqli'
 )
 
 for spipVersion in "${spipVersions[@]}"; do
@@ -29,7 +29,7 @@ for spipVersion in "${spipVersions[@]}"; do
       -e 's!%%SPIP_VERSION%%!'"${spipVersion}"'!g' \
       -e 's!%%SPIP_PACKAGE%%!'"${spipPackages[$spipVersion]}"'!g' \
       -e 's!%%MYSQL_PACKAGE%%!'"${mysqlPackages[$spipVersion]}"'!g' \
-      "Dockerfile${phpVersions[$spipVersion]}.tpl" > "./${spipVersion}/Dockerfile"
+      "Dockerfile.tpl" > "./${spipVersion}/Dockerfile"
 
     cp -a ./docker-entrypoint.sh "./${spipVersion}/docker-entrypoint.sh"
     chmod +x "./${spipVersion}/docker-entrypoint.sh"
